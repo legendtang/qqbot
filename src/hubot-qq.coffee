@@ -26,7 +26,7 @@ class QQHubotAdapter extends Adapter
       groupname: process.env.HUBOT_QQ_GROUP or 'qqbot群'
       port:      process.env.PORT or 3000
       host:      process.env.HUBOT_QQ_IMGHOST or 'localhost'
-      plugins:   ['help']
+      plugins:   ['help','hitokoto']
 
     skip_login = process.env.HUBOT_QQ_SKIP_LOGIN is 'true'
 
