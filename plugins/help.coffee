@@ -21,10 +21,15 @@ HELP_INFO = """
     version/about   #版本信息和关于
     plugins         #查看载入的插件
     time            #显示时间
-    echo 爱你        #重复后面的话
+    echo 补刀       #重复后面的话
     help            #本内容
     uptime          #服务运行时间
     roll            #返回1-100随机值
+    ruandom 1 2 3   #返回后面随机一个值
+    7莫斯(？吉野家) #返回一个预置进食场所( + 后面的一个场所)
+    有活动吗(？没)  #返回一个预置活动列表( + 后面的一个活动)
+    烟花	    #放烟花
+    补刀	    #补个刀
 """
 
 fs = require 'fs'
@@ -33,9 +38,8 @@ file_path = Path.join __dirname, "..", "package.json"
 bundle = JSON.parse( fs.readFileSync file_path )
 
 VERSION_INFO = """
-    v#{bundle.version} qqbot
-    http://github.com/xhan/qqbot
-    本工具还由 糗事百科 热血赞助！
+    v#{bundle.version} qqbot 魔改版
+    http://github.com/legendtang/qqbot
 """
 
 ###
@@ -58,7 +62,7 @@ module.exports = (content ,send, robot, message)->
     send "插件列表：\n" + robot.dispatcher.plugins.join('\r\n')
 
   if content.match /^time$/i
-    send "冥王星引力精准校时：" + new Date()
+    send "致远星引力精准校时：" + new Date()
 
   if ret = content.match /^echo (.*)/i
     send ret[1]
